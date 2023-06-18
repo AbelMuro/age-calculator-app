@@ -1,0 +1,53 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label{
+    font-size: var(--fs-14);
+    font-weight: 700;
+    font-style: normal;
+    line-height: 21px;
+    letter-spacing: 25%;
+    color: #716F6F
+}
+
+.input {
+    width: 160px;
+    height: 72px;
+    border-radius: 8px;
+    border: 1px solid #DCDCDC;
+    padding: 0px 24px;
+    font-size: var(--fs-32);
+    font-weight: 700;
+    font-style: normal;
+    line-height: 48px;
+    letter-spacing: 1%;
+    color: #151515;
+}
+
+.input:focus{
+    border: 1px solid #854DFF;
+    outline: none;
+}
+
+.input::placeholder {
+    color: #151515;
+    opacity: 0.5;
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.errorMessage{
+    display: none;
+    font-size: var(--fs-14);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 21px;
+    color: #FF5959;
+}
