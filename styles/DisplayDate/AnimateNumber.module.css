@@ -1,0 +1,9 @@
+.number{
+    color: #854DFF;
+    margin-right: 8px;    
+    font-size: var(--fs-104);
+    font-weight: 800;
+    font-style: italic;
+    line-height: 114.4px;
+    letter-spacing: -2%;
+}

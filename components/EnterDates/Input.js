@@ -38,14 +38,11 @@ const Input = forwardRef(({label, placeholder, errorMessage, clearParentError}, 
     }
 
     const handleInvalid = (e) => {
-        e.target.setCustomValidity(' ');                        //setting a custom error, but also removing the default popup
+        e.target.setCustomValidity(' ');                        //removing the default popup
         const isEmpty = e.target.validity.valueMissing;
-        //const isPatternValid = e.target.validity.patternMismatch;
 
         if(isEmpty)
             displayError(emptyMessageRef);   
-        //else if(isPatternValid)
-            //displayError(invalidDateErrorRef);
     }
 
     useImperativeHandle(ref, () => ({

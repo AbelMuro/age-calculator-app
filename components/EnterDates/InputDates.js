@@ -1,12 +1,13 @@
-import {useRef} from 'react';
+import {useRef, useContext} from 'react';
+import { DateContext } from '../../pages/_app';
 import Input from './Input';
 import styles from '../../styles/EnterDates/InputDates.module.css'
 import months from '../../data/months';
 
-//now i need to make a fetch request inside the on submit event handler
 
 export default function InputDates() {
-    const day = useRef();                       //these refs will be used to access the state and other functions from the <Input/>'s
+    const {setDate} = useContext(DateContext);
+    const day = useRef();                                           //these refs will be used to access the state and other functions from the <Input/>'s
     const month = useRef();
     const year = useRef();
     const errorMessageRef = useRef();
@@ -23,22 +24,24 @@ export default function InputDates() {
         let invalidDate = false;
         const currentYear = new Date().getFullYear();
 
-        if(selectedYear > currentYear || selectedYear < 0){
+        clearParentError();                                             //removing error message
+
+        if(selectedYear > currentYear || selectedYear < 0){             //displaying error message in child component if true
             year.current.displayInvalidDateError;
             invalidDate = true;
         }
 
-        if(selectedMonth > 12 || selectedMonth <= 0) {
+        if(selectedMonth > 12 || selectedMonth <= 0) {                  //displaying error message in child component if true
             month.current.displayInvalidDateError;
             invalidDate = true;
         }
 
-        if(selectedDay > 31 || selectedDay <= 0){
+        if(selectedDay > 31 || selectedDay <= 0){                       //displaying error message in child component if true
             day.current.displayInvalidDateError;
             invalidDate = true;
         }
 
-        if(invalidDate)
+        if(invalidDate)                                                 //if any of the above conditions are true, then we will return
             return;
         else {
             day.current.clearInvalidDateError;
@@ -46,17 +49,16 @@ export default function InputDates() {
             year.current.clearInvalidDateError;            
         }
 
-        
-        if(months[selectedMonth - 1] <= selectedDay){
+        if(months[selectedMonth - 1] < selectedDay){                    //checking to see if the date is valid
             errorMessageRef.current.style.display = 'block';
             day.current.displayRedBorder;
             month.current.displayRedBorder;
             year.current.displayRedBorder;
-            return;
         }
-            
 
-        
+        const selectedDate = [selectedYear, selectedMonth, selectedDay];
+        setDate(selectedDate);
+
     }
 
     return(
@@ -65,14 +67,12 @@ export default function InputDates() {
                 <Input 
                     label='DAY' 
                     placeholder='DD'
-                    pattern='\b([1-9]|[12][0-9]|3[01])\b'
                     errorMessage='Must be a valid day'
                     clearParentError={clearParentError}
                     ref={day}/>
                 <Input 
                     label='MONTH' 
                     placeholder='MM' 
-                    pattern='\b([1-9]|1[0-2])\b'
                     errorMessage='Must be a valid month'
                     clearParentError={clearParentError}
                     ref={month}/>
