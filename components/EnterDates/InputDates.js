@@ -6,7 +6,7 @@ import months from '../../data/months';
 //now i need to make a fetch request inside the on submit event handler
 
 export default function InputDates() {
-    const day = useRef();                       //refs will be used to access the state and other functions from the <Input/>'s
+    const day = useRef();                       //these refs will be used to access the state and other functions from the <Input/>'s
     const month = useRef();
     const year = useRef();
     const errorMessageRef = useRef();
@@ -64,13 +64,15 @@ export default function InputDates() {
             <div className={styles.container}>
                 <Input 
                     label='DAY' 
-                    placeholder='DD' 
+                    placeholder='DD'
+                    pattern='\b([1-9]|[12][0-9]|3[01])\b'
                     errorMessage='Must be a valid day'
                     clearParentError={clearParentError}
                     ref={day}/>
                 <Input 
                     label='MONTH' 
                     placeholder='MM' 
+                    pattern='\b([1-9]|1[0-2])\b'
                     errorMessage='Must be a valid month'
                     clearParentError={clearParentError}
                     ref={month}/>
