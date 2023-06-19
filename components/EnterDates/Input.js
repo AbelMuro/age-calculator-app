@@ -24,7 +24,7 @@ const Input = forwardRef(({label, placeholder, errorMessage, clearParentError}, 
     }
 
     const handleChange = (e) => {
-        e.target.setCustomValidity('');
+        e.target.setCustomValidity('');                 //removing the custom error
         clearParentError();
         clearError();
         setDate(e.target.value);
@@ -38,7 +38,7 @@ const Input = forwardRef(({label, placeholder, errorMessage, clearParentError}, 
     }
 
     const handleInvalid = (e) => {
-        e.target.setCustomValidity(' ');
+        e.target.setCustomValidity(' ');                    //setting a custom error, but also removing the default popup
         const isEmpty = e.target.validity.valueMissing;
 
         if(isEmpty)
@@ -84,7 +84,6 @@ const Input = forwardRef(({label, placeholder, errorMessage, clearParentError}, 
                 This field is required
             </div>  
         </fieldset>
-
     )
 })
 

@@ -3,12 +3,10 @@ import Input from './Input';
 import styles from '../../styles/EnterDates/InputDates.module.css'
 import months from '../../data/months';
 
-
-
 //now i need to make a fetch request inside the on submit event handler
 
 export default function InputDates() {
-    const day = useRef();
+    const day = useRef();                       //refs will be used to access the state and other functions from the <Input/>'s
     const month = useRef();
     const year = useRef();
     const errorMessageRef = useRef();
@@ -54,12 +52,11 @@ export default function InputDates() {
             day.current.displayRedBorder;
             month.current.displayRedBorder;
             year.current.displayRedBorder;
+            return;
         }
             
 
         
-        
-
     }
 
     return(
