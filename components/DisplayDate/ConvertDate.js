@@ -27,7 +27,7 @@ export default function ConvertDate() {
         const currentDay = currentDate.getDate();
 
 
-        if(currentMonth > birthMonth) {          //we assume that the current date has passed the birthday for the current year
+        if(currentMonth > birthMonth) {                                         //we assume that the current date has passed the birthday for the current year
             userAgeInYears = currentYear - birthYear;
             userAgeInDays = currentDay - birthDay;
             userAgeInMonths = currentMonth - birthMonth;         
@@ -62,15 +62,15 @@ export default function ConvertDate() {
         <>
             <div className={styles.years}>
                 <AnimateNumber number={year}/>
-                years
+                {year === 1 ? 'year' : 'years'}
             </div>
             <div className={styles.months}>
                 <AnimateNumber number={month}/>
-                months
+                {month === 1 ? 'month' : 'months'}
             </div>
             <div className={styles.days}>
                 <AnimateNumber number={day}/>
-                days
+                {day === 1 ? 'day' : 'days'}
             </div>
         </>
     )

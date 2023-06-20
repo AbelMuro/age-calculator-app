@@ -8,6 +8,8 @@
 .submitContainer{
     display: flex;
     align-items: center;
+    position: relative;
+    height: 96px;
 }
 
 .horizontalLine {
@@ -23,6 +25,8 @@
     flex-shrink: 0;
     background-color: #854DFF;
     cursor: pointer;
+    position: absolute;
+    right: 0px;
 }
 
 .submit:hover{
@@ -42,5 +46,48 @@
     font-style: italic;
     color: #FF5959;
     position: absolute;
-    bottom: -25px;
+    bottom: 0px;
+}
+
+@media(max-width: 720px){
+    .container{
+        width: 100%;
+    }
+
+    .submit{
+        position: absolute;
+        right: 50%;
+        transform: translateX(50%);
+    }
+}
+
+@media(max-width: 520px){
+    .submit{
+        width: 64px;
+        height: 64px;
+    }
+
+    .submitContainer{
+        height: 64px;
+        margin-bottom: 32px;
+    }
+
+    .arrow{
+        width: 24px;
+        height: 24px;
+    }
+}
+
+
+@media(max-width: 500px){
+    .container{
+        gap: 16px;
+        width: 280px;
+        height: 76px;
+        margin-bottom: 32px;
+    }
+
+    .errorMessage{
+        bottom: -25px;
+    }
 }

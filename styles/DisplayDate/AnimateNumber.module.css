@@ -5,5 +5,19 @@
     font-weight: 800;
     font-style: italic;
     line-height: 114.4px;
-    letter-spacing: -2%;
+    letter-spacing: -0.02em;
+}
+
+@media(max-width: 900px){
+    .number{
+        font-size: var(--fs-80);
+        line-height: 81.6px;
+    }
+}
+
+@media(max-width: 520px){
+    .number{
+        font-size: var(--fs-56);
+        line-height: 61.6px;
+    }
 }

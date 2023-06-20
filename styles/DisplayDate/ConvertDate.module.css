@@ -3,6 +3,21 @@
     font-weight: 800;
     font-style: italic;
     line-height: 114.4px;
-    letter-spacing: -2%;
+    letter-spacing: -0.02em;
     color: #151515;
+}
+
+
+@media(max-width: 900px){
+    .days, .months, .years{
+        font-size: var(--fs-80);
+        line-height: 81.6px;
+    }
+}
+
+@media(max-width: 520px){
+    .days, .months, .years{
+        font-size: var(--fs-56);
+        line-height: 61.6px;
+    }
 }

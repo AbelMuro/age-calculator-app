@@ -1,22 +1,24 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import styles from '../../styles/DisplayDate/AnimateNumber.module.css';
 
 export default function DisplayNumber({number}) {
     const [num, setNum] = useState('- -');
+    const interval = useRef();
+
+
+    useEffect(() => {
+        if(interval.current)
+            clearInterval(interval.current);
+        setNum(0);
+    }, [number])
 
     useEffect(() => {
         if(!Number(number)) return;
-        let initializeToZero = true;
 
-        const interval = setInterval(() => {
-            setNum((prevNum) => {
-                if(initializeToZero){
-                    initializeToZero = false;
-                    return 0;
-                }
-                    
+        interval.current = setInterval(() => {
+            setNum((prevNum) => {           
                 if(prevNum >= Number(number)){
-                    clearInterval(interval);
+                    clearInterval(interval.current);
                     return prevNum;
                 } 
                 else

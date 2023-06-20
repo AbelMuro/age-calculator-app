@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+    height: 130px;
+    flex-grow: 0;
 }
 
 .label{
@@ -9,7 +11,7 @@
     font-weight: 700;
     font-style: normal;
     line-height: 21px;
-    letter-spacing: 25%;
+    letter-spacing: 0.25em;
     color: #716F6F
 }
 
@@ -23,8 +25,9 @@
     font-weight: 700;
     font-style: normal;
     line-height: 48px;
-    letter-spacing: 1%;
+    letter-spacing: 0.01em;
     color: #151515;
+    flex-shrink: 0;
 }
 
 .input:focus{
@@ -50,4 +53,40 @@
     font-weight: 400;
     line-height: 21px;
     color: #FF5959;
+}
+
+
+@media(max-width: 720px){
+    .container{
+        width: 30%;
+    }
+    .input{
+        width: 100%;
+        padding: 16px;
+    }
+}
+
+@media(max-width: 500px){
+    .container{
+        width: 87.67px;
+        gap: 4px;
+    }
+
+    .label{
+        font-size: var(--fs-12);
+        line-height: 18px;
+        letter-spacing: 0.25em;
+    }
+
+    .input{
+        font-size: var(--fs-20);
+        line-height: 30px;
+        letter-spacing: 0.01em;
+        height: 54px;
+    }
+
+    .errorMessage{
+        font-size: var(--fs-10);
+        text-align: center;
+    }
 }

@@ -42,11 +42,15 @@
 
 :root{
     --font: 'poppins';
+    --fs-10: 0.675rem;
+    --fs-12: 0.75rem;
     --fs-14: 0.875rem;
     --fs-18: 0.75rem;
     --fs-20: 1.25rem;
     --fs-32: 2rem;
     --fs-52: 3.25rem;
+    --fs-56: 3.5rem;
+    --fs-80: 5rem;
     --fs-104: 6.5rem;
 }
 

@@ -1,5 +1,6 @@
 import {useRef, useContext} from 'react';
 import { DateContext } from '../../pages/_app';
+import useMediaQuery from '../../hooks/useMediaQuery';
 import Input from './Input';
 import styles from '../../styles/EnterDates/InputDates.module.css'
 import months from '../../data/months';
@@ -7,6 +8,7 @@ import months from '../../data/months';
 
 export default function InputDates() {
     const {setDate} = useContext(DateContext);
+    const mobile = useMediaQuery('(max-width: 642px)');
     const day = useRef();                                           //these refs will be used to access the state and other functions from the <Input/>'s
     const month = useRef();
     const year = useRef();
@@ -54,6 +56,7 @@ export default function InputDates() {
             day.current.displayRedBorder;
             month.current.displayRedBorder;
             year.current.displayRedBorder;
+            return;
         }
 
         const selectedDate = [selectedYear, selectedMonth, selectedDay];
@@ -67,20 +70,23 @@ export default function InputDates() {
                 <Input 
                     label='DAY' 
                     placeholder='DD'
-                    errorMessage='Must be a valid day'
-                    clearParentError={clearParentError}
+                    errorMessage={mobile ? 'Not valid day' : 'Must be a valid day'}
+                    clearParentError={clearParentError}                                         //child component will use callback to clear the error message in parent component
+                    mobile={mobile}
                     ref={day}/>
                 <Input 
                     label='MONTH' 
                     placeholder='MM' 
-                    errorMessage='Must be a valid month'
-                    clearParentError={clearParentError}
+                    errorMessage={mobile ? 'Not valid month' : 'Must be a valid month'}
+                    clearParentError={clearParentError}                                         //child component will use callback to clear the error message in parent component
+                    mobile={mobile}
                     ref={month}/>
                 <Input 
                     label='YEAR' 
                     placeholder='YYYY' 
-                    errorMessage='Must be in the past'
-                    clearParentError={clearParentError}
+                    errorMessage={mobile ? 'Is not in past' : 'Must be in the past'}
+                    clearParentError={clearParentError}                                         //child component will use callback to clear the error message in parent component
+                    mobile={mobile}
                     ref={year}/>
                 <div className={styles.errorMessage} ref={errorMessageRef}>
                     Must be a valid date

@@ -1,7 +1,7 @@
-import {useState, useRef, forwardRef, useImperativeHandle} from 'react';
+import {useState, useRef, forwardRef, useImperativeHandle, memo} from 'react';
 import styles from '../../styles/EnterDates/Input.module.css';
 
-const Input = forwardRef(({label, placeholder, errorMessage, clearParentError}, ref) => {
+const Input = forwardRef(({label, placeholder, errorMessage, clearParentError, mobile}, ref) => {
     const [date, setDate] = useState('');
     const inputRef = useRef();
     const labelRef = useRef();
@@ -81,10 +81,10 @@ const Input = forwardRef(({label, placeholder, errorMessage, clearParentError}, 
                 {errorMessage}
             </div>      
             <div className={styles.errorMessage} ref={emptyMessageRef}>
-                This field is required
+                {mobile ? 'Field required' : 'This field is required'}
             </div>  
         </fieldset>
     )
 })
 
-export default Input;
+export default memo(Input);
