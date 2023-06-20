@@ -4,16 +4,21 @@ import styles from '../../styles/DisplayDate/AnimateNumber.module.css';
 export default function DisplayNumber({number}) {
     const [num, setNum] = useState('- -');
     const interval = useRef();
-
+    const skipFirstRender = useRef(true);
 
     useEffect(() => {
-        if(interval.current)
+        if(skipFirstRender.current){
+            skipFirstRender.current = false;
+            return;
+        }
+        else if(interval.current)
             clearInterval(interval.current);
+
         setNum(0);
     }, [number])
 
     useEffect(() => {
-        if(!Number(number)) return;
+        if(!number) return;
 
         interval.current = setInterval(() => {
             setNum((prevNum) => {           

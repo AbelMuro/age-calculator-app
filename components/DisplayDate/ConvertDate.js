@@ -6,11 +6,9 @@ import months from '../../data/months';
 
 export default function ConvertDate() {
     const {date} = useContext(DateContext);
-    const [year, setYear] = useState('- -');
-    const [month, setMonth] = useState('- -');
-    const [day, setDay] = useState('- -');
-
-    useEffect
+    const [year, setYear] = useState();
+    const [month, setMonth] = useState();
+    const [day, setDay] = useState();
 
     useEffect(() => {
         if(!date) return;
